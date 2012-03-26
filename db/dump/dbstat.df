@@ -1,0 +1,937 @@
+ADD SEQUENCE "seqTableStat"
+  INITIAL 0
+  INCREMENT 1
+  CYCLE-ON-LIMIT no
+
+ADD SEQUENCE "seqDbStat"
+  INITIAL 0
+  INCREMENT 1
+  CYCLE-ON-LIMIT no
+
+ADD SEQUENCE "seqAreaStat"
+  INITIAL 0
+  INCREMENT 1
+  CYCLE-ON-LIMIT no
+
+ADD SEQUENCE "seqIndexStat"
+  INITIAL 0
+  INCREMENT 1
+  CYCLE-ON-LIMIT no
+
+ADD SEQUENCE "seqResrcStat"
+  INITIAL 0
+  INCREMENT 1
+  CYCLE-ON-LIMIT no
+
+ADD TABLE "areastat"
+  AREA "AreaStat"
+  DUMP-NAME "areastat"
+
+ADD FIELD "id" OF "areastat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 10
+
+ADD FIELD "pollDT" OF "areastat" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS.SSS"
+  INITIAL ?
+  MAX-WIDTH 8
+  ORDER 20
+
+ADD FIELD "pollD" OF "areastat" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  MAX-WIDTH 8
+  ORDER 25
+
+ADD FIELD "pollT" OF "areastat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL 0
+  MAX-WIDTH 8
+  ORDER 26
+
+ADD FIELD "DbHost" OF "areastat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 30
+
+ADD FIELD "DbNam" OF "areastat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 40
+
+ADD FIELD "AreaName" OF "areastat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 50
+
+ADD FIELD "AreaNumber" OF "areastat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 60
+
+ADD FIELD "AreaRPB" OF "areastat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 70
+
+ADD FIELD "AreaClusterSize" OF "areastat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 80
+
+ADD FIELD "AreaExtents" OF "areastat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 90
+
+ADD FIELD "TableCount" OF "areastat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 100
+
+ADD FIELD "IndexCount" OF "areastat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 110
+
+ADD FIELD "AreaHWM" OF "areastat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 120
+
+ADD FIELD "AreaReads" OF "areastat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 130
+
+ADD FIELD "AreaWrites" OF "areastat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 140
+
+ADD FIELD "TableRead" OF "areastat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 150
+
+ADD FIELD "TableUpdate" OF "areastat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 160
+
+ADD FIELD "TableCreate" OF "areastat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 170
+
+ADD FIELD "TableDelete" OF "areastat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 180
+
+ADD FIELD "IndexRead" OF "areastat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 190
+
+ADD FIELD "IndexCreate" OF "areastat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 200
+
+ADD FIELD "IndexDelete" OF "areastat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 210
+
+ADD INDEX "AreaStat-PK" ON "areastat" 
+  AREA "IdxAreaStat"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "id" ASCENDING 
+
+ADD INDEX "AreaStat1" ON "areastat" 
+  AREA "IdxAreaStat"
+  INDEX-FIELD "DbHost" ASCENDING 
+  INDEX-FIELD "DbNam" ASCENDING 
+  INDEX-FIELD "AreaName" ASCENDING 
+
+ADD INDEX "AreaStatD" ON "areastat" 
+  AREA "IdxAreaStat"
+  INDEX-FIELD "pollD" ASCENDING 
+
+ADD INDEX "AreaStatDT" ON "areastat" 
+  AREA "IdxAreaStat"
+  INDEX-FIELD "pollDT" ASCENDING 
+
+ADD TABLE "dbstat"
+  AREA "DbStat"
+  DUMP-NAME "dbstat"
+
+ADD FIELD "id" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 10
+
+ADD FIELD "pollDT" OF "dbstat" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS.SSS"
+  INITIAL ?
+  MAX-WIDTH 8
+  ORDER 20
+
+ADD FIELD "pollD" OF "dbstat" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  MAX-WIDTH 8
+  ORDER 25
+
+ADD FIELD "pollT" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL 0
+  MAX-WIDTH 8
+  ORDER 26
+
+ADD FIELD "DbHost" OF "dbstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 30
+
+ADD FIELD "DbNam" OF "dbstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 40
+
+ADD FIELD "DbPath" OF "dbstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 200
+  ORDER 50
+
+ADD FIELD "DbUptime" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 60
+
+ADD FIELD "DbBlockSize" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 70
+
+ADD FIELD "DbVersionn" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 80
+
+ADD FIELD "ConnectNotes" OF "dbstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 90
+
+ADD FIELD "LastTransId" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 100
+
+ADD FIELD "DbSize" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 110
+
+ADD FIELD "BiSize" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 120
+
+ADD FIELD "Spin" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 130
+
+ADD FIELD "TableStatBase" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 140
+
+ADD FIELD "TableRangeSize" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 150
+
+ADD FIELD "HighestTableId" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 160
+
+ADD FIELD "TableCount" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 170
+
+ADD FIELD "IndexStatBase" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 180
+
+ADD FIELD "IndexRangeSize" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 190
+
+ADD FIELD "HighestIndexId" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 200
+
+ADD FIELD "IndexCount" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 210
+
+ADD FIELD "DbStartTime" OF "dbstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 60
+  ORDER 220
+
+ADD FIELD "DbTimeStamp" OF "dbstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 60
+  ORDER 230
+
+ADD FIELD "PreviousSnapshot" OF "dbstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 240
+
+ADD FIELD "CurrSnapshot" OF "dbstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 250
+
+ADD FIELD "DbAccesses" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 270
+
+ADD FIELD "RecRead" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 280
+
+ADD FIELD "RecUpdate" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 290
+
+ADD FIELD "RecCreate" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 300
+
+ADD FIELD "RecDelete" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 310
+
+ADD FIELD "BytesRead" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 320
+
+ADD FIELD "BytesUpdate" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 330
+
+ADD FIELD "BytesCreate" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 340
+
+ADD FIELD "BytesDelete" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 350
+
+ADD FIELD "IdxRead" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 360
+
+ADD FIELD "IdxCreate" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 370
+
+ADD FIELD "IdxDelete" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 380
+
+ADD FIELD "DbReads" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 390
+
+ADD FIELD "DbWrites" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 400
+
+ADD FIELD "DatDbReads" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 410
+
+ADD FIELD "DatDbWrites" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 420
+
+ADD FIELD "BiWrites" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 430
+
+ADD FIELD "BiBytesWrtn" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 440
+
+ADD FIELD "BiNotesWrtn" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 450
+
+ADD FIELD "TransComm" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 460
+
+ADD FIELD "LatchLock" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 470
+
+ADD FIELD "LatchWait" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 480
+
+ADD FIELD "ResrcLock" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 490
+
+ADD FIELD "ResrcWait" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 500
+
+ADD FIELD "SemWaits" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 510
+
+ADD FIELD "TxeLock" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 520
+
+ADD FIELD "TxeWait" OF "dbstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 530
+
+ADD FIELD "SnapshotEtime" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 540
+
+ADD FIELD "SnapshotInterval" OF "dbstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 260
+
+ADD INDEX "DbStat-PK" ON "dbstat" 
+  AREA "IdxDbStat"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "id" ASCENDING 
+
+ADD INDEX "DbStat1" ON "dbstat" 
+  AREA "IdxDbStat"
+  INDEX-FIELD "DbHost" ASCENDING 
+  INDEX-FIELD "DbNam" ASCENDING 
+  INDEX-FIELD "DbPath" ASCENDING 
+
+ADD INDEX "DbStatD" ON "dbstat" 
+  AREA "IdxDbStat"
+  INDEX-FIELD "pollD" ASCENDING 
+
+ADD INDEX "DbStatDT" ON "dbstat" 
+  AREA "IdxDbStat"
+  INDEX-FIELD "pollDT" ASCENDING 
+
+ADD TABLE "indexstat"
+  AREA "IndexStat"
+  DUMP-NAME "indexstat"
+
+ADD FIELD "id" OF "indexstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 10
+
+ADD FIELD "pollDT" OF "indexstat" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS.SSS"
+  INITIAL ?
+  MAX-WIDTH 8
+  ORDER 20
+
+ADD FIELD "pollD" OF "indexstat" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  MAX-WIDTH 8
+  ORDER 25
+
+ADD FIELD "pollT" OF "indexstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL 0
+  MAX-WIDTH 8
+  ORDER 26
+
+ADD FIELD "DbHost" OF "indexstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 30
+
+ADD FIELD "Dbnam" OF "indexstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 40
+
+ADD FIELD "AreaName" OF "indexstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 50
+
+ADD FIELD "TableName" OF "indexstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 60
+
+ADD FIELD "IndexName" OF "indexstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 70
+
+ADD FIELD "IndexAttr" OF "indexstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 80
+
+ADD FIELD "RootBlock" OF "indexstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 90
+
+ADD FIELD "IndexRead" OF "indexstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 100
+
+ADD FIELD "IndexCreate" OF "indexstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 110
+
+ADD FIELD "IndexDelete" OF "indexstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 120
+
+ADD FIELD "IndexOsRead" OF "indexstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 130
+
+ADD FIELD "IndexReadSec" OF "indexstat" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 140
+
+ADD FIELD "IndexCreateSec" OF "indexstat" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 150
+
+ADD FIELD "IndexDeleteSec" OF "indexstat" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 160
+
+ADD FIELD "IndexOsReadSec" OF "indexstat" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 170
+
+ADD INDEX "IndexStat-PK" ON "indexstat" 
+  AREA "IdxIndexStat"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "id" ASCENDING 
+
+ADD INDEX "IndexStat1" ON "indexstat" 
+  AREA "IdxIndexStat"
+  INDEX-FIELD "DbHost" ASCENDING 
+  INDEX-FIELD "Dbnam" ASCENDING 
+  INDEX-FIELD "TableName" ASCENDING 
+  INDEX-FIELD "IndexName" ASCENDING 
+
+ADD INDEX "IndexStatD" ON "indexstat" 
+  AREA "IdxIndexStat"
+  INDEX-FIELD "pollD" ASCENDING 
+
+ADD INDEX "IndexStatDT" ON "indexstat" 
+  AREA "IdxIndexStat"
+  INDEX-FIELD "pollDT" ASCENDING 
+
+ADD TABLE "resrcstat"
+  AREA "ResrcStat"
+  DUMP-NAME "resrcstat"
+
+ADD FIELD "id" OF "resrcstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 10
+
+ADD FIELD "pollDT" OF "resrcstat" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS.SSS"
+  INITIAL ?
+  MAX-WIDTH 8
+  ORDER 20
+
+ADD FIELD "pollD" OF "resrcstat" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  MAX-WIDTH 8
+  ORDER 25
+
+ADD FIELD "pollT" OF "resrcstat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL 0
+  MAX-WIDTH 8
+  ORDER 26
+
+ADD FIELD "DbHost" OF "resrcstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 30
+
+ADD FIELD "DbNam" OF "resrcstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 40
+
+ADD FIELD "ResrcType" OF "resrcstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 50
+
+ADD FIELD "ResrcName" OF "resrcstat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 80
+  ORDER 60
+
+ADD FIELD "ResrcLock" OF "resrcstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 70
+
+ADD FIELD "ResrcWait" OF "resrcstat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 80
+
+ADD FIELD "ResrcLockSec" OF "resrcstat" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 90
+
+ADD FIELD "ResrcWaitSec" OF "resrcstat" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 100
+
+ADD INDEX "ResrcStat-PK" ON "resrcstat" 
+  AREA "IdxResrcStat"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "id" ASCENDING 
+
+ADD INDEX "ResrcStat1" ON "resrcstat" 
+  AREA "IdxResrcStat"
+  INDEX-FIELD "DbHost" ASCENDING 
+  INDEX-FIELD "DbNam" ASCENDING 
+  INDEX-FIELD "ResrcType" ASCENDING 
+  INDEX-FIELD "ResrcName" ASCENDING 
+
+ADD INDEX "ResrcStatD" ON "resrcstat" 
+  AREA "IdxResrcStat"
+  INDEX-FIELD "pollD" ASCENDING 
+
+ADD INDEX "ResrcStatDT" ON "resrcstat" 
+  AREA "IdxResrcStat"
+  INDEX-FIELD "pollDT" ASCENDING 
+
+ADD TABLE "tablestat"
+  AREA "TableStat"
+  DUMP-NAME "tablestat"
+
+ADD FIELD "id" OF "tablestat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 10
+
+ADD FIELD "pollDT" OF "tablestat" AS datetime 
+  FORMAT "99/99/9999 HH:MM:SS.SSS"
+  INITIAL ?
+  MAX-WIDTH 8
+  ORDER 20
+
+ADD FIELD "pollD" OF "tablestat" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  MAX-WIDTH 8
+  ORDER 25
+
+ADD FIELD "pollT" OF "tablestat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL 0
+  MAX-WIDTH 8
+  ORDER 26
+
+ADD FIELD "DbHost" OF "tablestat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 30
+
+ADD FIELD "DbNam" OF "tablestat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 40
+
+ADD FIELD "AreaName" OF "tablestat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 60
+  ORDER 50
+
+ADD FIELD "TableName" OF "tablestat" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  MAX-WIDTH 16
+  ORDER 60
+
+ADD FIELD "IndexCount" OF "tablestat" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 4
+  ORDER 70
+
+ADD FIELD "TableRead" OF "tablestat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 80
+
+ADD FIELD "TableUpdate" OF "tablestat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 90
+
+ADD FIELD "TableCreate" OF "tablestat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 100
+
+ADD FIELD "TableDelete" OF "tablestat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 110
+
+ADD FIELD "TableOSRead" OF "tablestat" AS int64 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  MAX-WIDTH 8
+  ORDER 120
+
+ADD FIELD "TableReadSec" OF "tablestat" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 130
+
+ADD FIELD "TableUpdateSec" OF "tablestat" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 140
+
+ADD FIELD "TableCreateSec" OF "tablestat" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 150
+
+ADD FIELD "TableDeleteSec" OF "tablestat" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 160
+
+ADD FIELD "TableOsReadSec" OF "tablestat" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 170
+
+ADD INDEX "TableStat-PK" ON "tablestat" 
+  AREA "IdxTableStat"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "id" ASCENDING 
+
+ADD INDEX "TableStat1" ON "tablestat" 
+  AREA "IdxTableStat"
+  INDEX-FIELD "DbHost" ASCENDING 
+  INDEX-FIELD "DbNam" ASCENDING 
+  INDEX-FIELD "TableName" ASCENDING 
+
+ADD INDEX "TableStatD" ON "tablestat" 
+  AREA "IdxTableStat"
+  INDEX-FIELD "pollD" ASCENDING 
+
+ADD INDEX "TableStatDT" ON "tablestat" 
+  AREA "IdxTableStat"
+  INDEX-FIELD "pollDT" ASCENDING 
+
+.
+PSC
+cpstream=utf-8
+.
+0000017619

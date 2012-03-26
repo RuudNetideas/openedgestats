@@ -1,0 +1,122 @@
+DEFINE TEMP-TABLE ttAreaStat NO-UNDO
+  FIELD DbHost      AS CHARACTER
+  FIELD DbNam       AS CHARACTER
+  FIELD AreaName    AS CHARACTER
+  FIELD AreaNumber  AS INTEGER
+  FIELD AreaRPB     AS INTEGER
+  FIELD AreaClusterSize AS INTEGER
+  FIELD AreaExtents AS INTEGER
+  FIELD TableCount  AS INTEGER
+  FIELD IndexCount  AS INTEGER
+  FIELD AreaHWM     AS INT64
+  FIELD AreaReads   AS INT64
+  FIELD AreaWrites  AS INT64
+  FIELD TableRead   AS INT64
+  FIELD TableUpdate AS INT64
+  FIELD TableCreate AS INT64
+  FIELD TableDelete AS INT64
+  FIELD IndexRead   AS INT64
+  FIELD IndexCreate AS INT64
+  FIELD IndexDelete AS INT64.
+
+DEFINE TEMP-TABLE ttTableStat NO-UNDO
+  FIELD DbHost      AS CHARACTER
+  FIELD DbNam       AS CHARACTER
+  FIELD areaName    AS CHARACTER
+  FIELD tableName   AS CHARACTER
+  FIELD indexCount  AS INTEGER
+  FIELD TableRead   AS INT64
+  FIELD TableUpdate AS INT64
+  FIELD TableCreate AS INT64
+  FIELD TableDelete AS INT64
+  FIELD TableOsRead AS INT64
+  FIELD TableReadSec   AS DECIMAL
+  FIELD TableUpdateSec AS DECIMAL
+  FIELD TableCreateSec AS DECIMAL
+  FIELD TableDeleteSec AS DECIMAL
+  FIELD TableOsReadSec AS DECIMAL.
+
+DEFINE TEMP-TABLE ttIndexStat NO-UNDO
+  FIELD DbHost      AS CHARACTER
+  FIELD DbNam       AS CHARACTER
+  FIELD AreaName    AS CHARACTER
+  FIELD TableName   AS CHARACTER
+  FIELD IndexName   AS CHARACTER
+  FIELD IndexAttr   AS CHARACTER
+  FIELD RootBlock   AS INT64
+  FIELD IndexRead   AS INT64
+  FIELD IndexCreate AS INT64
+  FIELD IndexDelete AS INT64
+  FIELD IndexOsRead AS INT64
+  FIELD IndexReadSec AS DECIMAL
+  FIELD IndexCreateSec AS DECIMAL
+  FIELD IndexDeleteSec AS DECIMAL
+  FIELD IndexOsReadSec AS DECIMAL.
+
+DEFINE TEMP-TABLE ttDbStat NO-UNDO
+  FIELD DbHost      AS CHARACTER
+  FIELD DbNam       AS CHARACTER
+  FIELD DbPath      AS CHARACTER
+  FIELD DbUptime AS INTEGER
+  FIELD DbBlockSize AS INTEGER
+  FIELD DbVersionn  AS INTEGER
+  FIELD ConnectNotes AS CHARACTER
+  FIELD LastTransId AS INT64
+  FIELD DbSize      AS INT64
+  FIELD BiSize      AS INT64
+  FIELD Spin        AS INTEGER
+  FIELD TableStatBase AS INTEGER
+  FIELD TableRangeSize AS INTEGER
+  FIELD HighestTableId AS INTEGER
+  FIELD TableCount     AS INTEGER
+  FIELD IndexStatBase  AS INTEGER
+  FIELD IndexRangeSize AS INTEGER
+  FIELD HighestIndexId AS INTEGER
+  FIELD IndexCount     AS INTEGER
+  FIELD DbStartTime    AS CHARACTER
+  FIELD DbTimeStamp    AS CHARACTER
+  FIELD PreviousSnapshot AS CHARACTER
+  FIELD CurrSnaphost     AS CHARACTER
+  FIELD SnapshotInterval AS INTEGER
+  FIELD DbAccesses  AS INT64
+  FIELD RecRead     AS INT64
+  FIELD RecUpdate   AS INT64
+  FIELD RecCreate   AS INT64
+  FIELD RecDelete   AS INT64
+  FIELD BytesRead   AS INT64
+  FIELD BytesUpdate AS INT64
+  FIELD BytesCreate AS INT64
+  FIELD BytesDelete AS INT64
+  FIELD IdxRead     AS INT64
+  FIELD IdxCreate   AS INT64
+  FIELD IdxDelete   AS INT64
+  FIELD DbReads     AS INT64
+  FIELD DbWrites    AS INT64
+  FIELD DatDbReads  AS INT64
+  FIELD DatDbWrites AS INT64
+  FIELD IdxDbReads  AS INT64
+  FIELD IdxDbWrites AS INT64
+  FIELD BiWrites    AS INT64
+  FIELD BiBytesWrtn AS INT64
+  FIELD BiNotesWrtn AS INT64
+  FIELD TransComm   AS INT64
+  FIELD LatchLock   AS INT64
+  FIELD LatchWait   AS INT64
+  FIELD ResrcLock   AS INT64
+  FIELD ResrcWait   AS INT64
+  FIELD SemWaits    AS INT64
+  FIELD TxeLock     AS INT64
+  FIELD TxeWait     AS INT64
+  FIELD SnapshotEtime AS INTEGER.
+
+DEFINE TEMP-TABLE ttResrcStat NO-UNDO
+  FIELD DbHost AS CHARACTER
+  FIELD DbNam  AS CHARACTER
+  FIELD ResrcType AS CHARACTER
+  FIELD ResrcName AS CHARACTER
+  FIELD ResrcLock AS INT64
+  FIELD ResrcWait AS INT64
+  FIELD ResrcLockSec AS DECIMAL
+  FIELD ResrcWaitSec AS DECIMAL.
+
+{ src/import.i }
